@@ -1,0 +1,73 @@
+@use "../abstracts" as a;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: a.$color-grey-900;
+  color: a.$color-grey-300;
+  line-height: 1.2;
+  height: 100%;
+  width: 100vw;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: a.$text;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+a,
+button {
+  cursor: revert;
+}
+
+button {
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+::placeholder {
+  color: unset;
+}
