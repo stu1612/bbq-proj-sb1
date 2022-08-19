@@ -5,6 +5,13 @@
   justify-content: $justify;
 }
 
+@mixin parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @mixin media-xs {
   @media screen and (min-width: 400px) {
     @content;
@@ -24,12 +31,18 @@
 }
 
 @mixin media-lg {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 960px) {
     @content;
   }
 }
 
 @mixin media-xl {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin media-xxl {
   @media screen and (min-width: 1600px) {
     @content;
   }

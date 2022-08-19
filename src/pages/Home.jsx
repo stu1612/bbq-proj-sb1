@@ -1,8 +1,6 @@
 // files
 import data from "../data/homeStories.json";
 import Hero from "../components/Hero";
-import img from "../assets/images/home_banner.jpg";
-import icon from "../assets/images/bull.png";
 import StoryContainer from "../components/StoryContainer";
 
 export default function Home() {
@@ -12,12 +10,7 @@ export default function Home() {
   ));
   return (
     <main>
-      <Hero
-        img={img}
-        alt="Pork steaks cooking on open BBQ"
-        icon={icon}
-        title="Holy BBQ"
-      />
+      <Hero ImgRoute="hero__home" />
       <section>{IntroCards}</section>
     </main>
   );

@@ -1,11 +1,7 @@
-export default function Hero({ img, alt, icon, title }) {
+export default function Hero({ ImgRoute }) {
   return (
     <section className="hero">
-      <div className="hero__img">
-        <img src={img} alt={alt} />
-        <h1 className="heading-hero">{title}</h1>
-        <img src={icon} alt="icon" className="icon" />
-      </div>
+      <div className={`hero__img ${ImgRoute}`} />
     </section>
   );
 }

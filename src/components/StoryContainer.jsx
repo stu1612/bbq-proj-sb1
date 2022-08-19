@@ -4,7 +4,7 @@ export default function StoryContainer({ story }) {
   const { title, text_1, text_2, text_3, btn, image } = story;
   return (
     <div className="story">
-      <div className="story__content">
+      <div className="content">
         <div className="story__content--title">
           <h2 className="heading-title">{title}</h2>
         </div>
@@ -15,7 +15,7 @@ export default function StoryContainer({ story }) {
         </div>
         {btn && <button>{btn}</button>}
       </div>
-      <div className="story__image">
+      <div className="image">
         <img src={require(`../assets/images/${image}`)} alt={title} />
       </div>
     </div>

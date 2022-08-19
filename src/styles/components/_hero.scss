@@ -1,18 +1,18 @@
+@use "../abstracts" as a;
+
 .hero {
-  height: 100vh;
   position: relative;
 
-  h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &__img {
+    min-height: 100vh;
+    width: 100%;
+    @include a.parallax;
   }
-}
 
-.icon {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -80%);
+  &__home {
+    background-image: url("../../assets/images/home_banner.jpg");
+  }
+  &__menu {
+    background-image: url("../../assets/images/menu_banner.jpg");
+  }
 }

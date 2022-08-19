@@ -5,23 +5,56 @@
   width: min(100%, 120rem);
   margin: 0 auto;
 
-  &__content {
-    @include a.flex(column, flex-start, center);
-    padding: 0 5rem;
-    grid-area: one;
-  }
-
-  &__image {
-    grid-area: two;
-  }
-
   &:nth-child(1) {
-    grid-template-areas: "one two two";
+    grid-template-areas: "one" "two";
+    .content {
+      @include a.flex(column, flex-start, center);
+      padding: 0 5rem;
+      grid-area: one;
+    }
+
+    .image {
+      grid-area: two;
+    }
   }
   &:nth-child(2) {
-    grid-template-areas: "two two one";
+    grid-template-areas: "one" "two";
+
+    .content {
+      grid-area: one;
+      @include a.flex(column, flex-start, center);
+      padding: 0 5rem;
+    }
+
+    .image {
+      grid-area: two;
+    }
   }
   &:nth-child(3) {
-    grid-template-areas: "one two two two";
+    grid-template-areas: "one" "two";
+
+    .content {
+      grid-area: one;
+      @include a.flex(column, flex-start, center);
+      padding: 0 5rem;
+    }
+
+    .image {
+      grid-area: two;
+    }
+  }
+}
+
+@include a.media-lg {
+  .story {
+    &:nth-child(1) {
+      grid-template-areas: "one one two two two two";
+    }
+    &:nth-child(2) {
+      grid-template-areas: "two two two two one one";
+    }
+    &:nth-child(3) {
+      grid-template-areas: "one two two two two two";
+    }
   }
 }

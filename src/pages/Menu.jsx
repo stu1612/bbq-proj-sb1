@@ -1,5 +1,10 @@
+// files
 import Hero from "../components/Hero";
 
 export default function Menu() {
-  return <Hero />;
+  return (
+    <main>
+      <Hero ImgRoute="hero__menu" />
+    </main>
+  );
 }
