@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Long+Cang&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=IBM+Plex+Mono:wght@300;400&family=Inter:wght@300&family=Ubuntu+Mono&display=swap");
+
+// font-family: 'Cabin Sketch', cursive;
+// font-family: 'IBM Plex Mono', monospace;
+// font-family: 'Ubuntu Mono', monospace;
 
 // colors
 $accent-color-red: #e40c2b;
@@ -9,8 +14,11 @@ $color-grey-300: #f7f4e9;
 $color-grey-900: #1d1d2c;
 
 // fonts
-$text: "Poppins", sans-serif;
-$heading: "Long Cang", cursive;
+// $text: "Poppins", sans-serif;
+$text: "IBM Plex Mono", monospace;
+// $heading: "Long Cang", cursive;
+// $heading: "Cabin Sketch", cursive;
+$heading: "Poppins", sans-serif;
 $special: "Inter", sans-serif;
 
 // spacing

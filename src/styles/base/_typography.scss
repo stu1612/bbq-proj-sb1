@@ -24,12 +24,13 @@ h2 {
   font-family: a.$heading;
 }
 
-.heading__hero {
+.heading-hero {
   font-size: 6.4rem;
   line-height: 2rem;
 }
 
-.heading__title {
+.heading-title {
   font-size: 4.8rem;
   line-height: 1.8rem;
+  text-transform: capitalize;
 }

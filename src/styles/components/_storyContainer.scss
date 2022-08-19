@@ -1,0 +1,27 @@
+@use "../abstracts" as a;
+
+.story {
+  display: grid;
+  width: min(100%, 120rem);
+  margin: 0 auto;
+
+  &__content {
+    @include a.flex(column, flex-start, center);
+    padding: 0 5rem;
+    grid-area: one;
+  }
+
+  &__image {
+    grid-area: two;
+  }
+
+  &:nth-child(1) {
+    grid-template-areas: "one two two";
+  }
+  &:nth-child(2) {
+    grid-template-areas: "two two one";
+  }
+  &:nth-child(3) {
+    grid-template-areas: "one two two two";
+  }
+}
