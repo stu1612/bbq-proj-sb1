@@ -4,57 +4,47 @@
   display: grid;
   width: min(100%, 120rem);
   margin: 0 auto;
+  grid-template-areas: "one" "two";
 
-  &:nth-child(1) {
-    grid-template-areas: "one" "two";
-    .content {
-      @include a.flex(column, flex-start, center);
-      padding: 0 5rem;
-      grid-area: one;
-    }
-
-    .image {
-      grid-area: two;
-    }
+  .content {
+    @include a.flex(column, flex-start, center);
+    padding: 0 5rem;
+    grid-area: one;
   }
-  &:nth-child(2) {
-    grid-template-areas: "one" "two";
 
-    .content {
-      grid-area: one;
-      @include a.flex(column, flex-start, center);
-      padding: 0 5rem;
-    }
-
-    .image {
-      grid-area: two;
-    }
+  .image {
+    grid-area: two;
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-  &:nth-child(3) {
-    grid-template-areas: "one" "two";
+}
 
-    .content {
-      grid-area: one;
-      @include a.flex(column, flex-start, center);
-      padding: 0 5rem;
-    }
-
-    .image {
-      grid-area: two;
-    }
-  }
+.about {
+  background-image: url("../../assets/images/story_1.jpg");
+  width: 600px;
+}
+.menu {
+  background-image: url("../../assets/images/new.jpg");
+  width: 800px;
+  @include a.parallax;
+}
+.contact {
+  background-image: url("../../assets/images/story_3.jpg");
+  width: 700px;
 }
 
 @include a.media-lg {
   .story {
     &:nth-child(1) {
-      grid-template-areas: "one one two two two two";
+      grid-template-areas: "one two";
     }
     &:nth-child(2) {
-      grid-template-areas: "two two two two one one";
+      grid-template-areas: "two one";
     }
     &:nth-child(3) {
-      grid-template-areas: "one two two two two two";
+      grid-template-areas: "one two ";
     }
   }
 }
