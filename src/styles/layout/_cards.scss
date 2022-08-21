@@ -30,3 +30,7 @@
     }
   }
 }
+
+.product {
+  @extend .category;
+}

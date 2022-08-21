@@ -1,7 +1,7 @@
 // files
-import CateogryItem from "../components/CateogryItem";
+import CateogryItem from "../components/CategoryItem";
 import Hero from "../components/Hero";
-import data from "../data/dummyData.json";
+import data from "../data/dummyMenu.json";
 
 export default function Menu() {
   // components

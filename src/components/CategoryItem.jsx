@@ -1,4 +1,7 @@
-export default function CateogryItem({ item }) {
+// npm
+import { Link } from "react-router-dom";
+
+export default function CategoryItem({ item }) {
   // properties
   const { title, body, img } = item;
   return (
@@ -11,7 +14,9 @@ export default function CateogryItem({ item }) {
         <div className="category__body--text">
           <p>{body}</p>
         </div>
-        <button>see more</button>
+        <Link to={`category/${title}`}>
+          <button>see more</button>
+        </Link>
       </div>
     </div>
   );
