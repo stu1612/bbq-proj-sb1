@@ -6,15 +6,16 @@
   margin: 0 auto;
   grid-template-areas: "one" "two";
 
-  .content {
+  &__body {
     @include a.flex(column, flex-start, center);
     padding: 0 5rem;
     grid-area: one;
   }
 
-  .image {
+  &__image {
     grid-area: two;
-    height: 600px;
+    height: 80vh;
+    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,16 +24,12 @@
 
 .about {
   background-image: url("../../assets/images/story_1.jpg");
-  width: 600px;
 }
 .menu {
-  background-image: url("../../assets/images/new.jpg");
-  width: 800px;
-  @include a.parallax;
+  background-image: url("../../assets/images/story_2.jpg");
 }
 .contact {
   background-image: url("../../assets/images/story_3.jpg");
-  width: 700px;
 }
 
 @include a.media-lg {
@@ -45,6 +42,16 @@
     }
     &:nth-child(3) {
       grid-template-areas: "one two ";
+    }
+    .about {
+      width: 600px;
+    }
+    .menu {
+      width: 800px;
+    }
+    .contact {
+      width: 700px;
+      @include a.parallax;
     }
   }
 }

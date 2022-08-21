@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "title": "Title 1",
+    "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat magnam facere, commodi esse minima ratione enim autem nostrum? Quivitae unde aliquid, facilis numquam blanditiis ipsum deleniti magnamomnis dicta.",
+    "img": "story_1.jpg"
+  },
+  {
+    "id": 1,
+    "title": "Title 2",
+    "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat magnam facere, commodi esse minima ratione enim autem nostrum? Quivitae unde aliquid, facilis numquam blanditiis ipsum deleniti magnamomnis dicta.",
+    "img": "story_1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Title 3",
+    "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat magnam facere, commodi esse minima ratione enim autem nostrum? Quivitae unde aliquid, facilis numquam blanditiis ipsum deleniti magnamomnis dicta.",
+    "img": "story_1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Title 4",
+    "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat magnam facere, commodi esse minima ratione enim autem nostrum? Quivitae unde aliquid, facilis numquam blanditiis ipsum deleniti magnamomnis dicta.",
+    "img": "story_1.jpg"
+  }
+]

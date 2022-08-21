@@ -1,0 +1,32 @@
+@use "../abstracts" as a;
+
+.category {
+  display: grid;
+  margin: 7rem auto;
+  grid-gap: 5rem;
+  width: min(80%, 1200px);
+
+  &__body {
+    @include a.flex(column, flex-start, center);
+
+    p {
+      margin: 2rem 0;
+    }
+  }
+}
+
+@include a.media-xs {
+  .category {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@include a.media-sm {
+  .category {
+    grid-auto-flow: dense;
+
+    &:nth-child(2n + 1) > div:first-child {
+      grid-column: 2;
+    }
+  }
+}

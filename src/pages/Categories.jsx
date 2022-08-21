@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Categories() {
-  return <div>Category</div>;
+  return <div>Categories</div>;
 }
