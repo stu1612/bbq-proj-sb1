@@ -5,12 +5,15 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import setup from "../data/login.json";
 import useLogin from "../hooks/useLogin";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Login() {
-  const { login, error, loading } = useLogin();
   // local state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // properties
+  const { login, error, loading } = useLogin();
+  const { user } = useAuthContext();
 
   // methods
   function onSubmit(event) {
@@ -20,6 +23,7 @@ export default function Login() {
 
   return (
     <main id="login">
+      <h2>Hello, you are currently {user ? "signed" : "not signed"} in!</h2>
       <div className="admin-form">
         {loading && <p>Loading ..</p>}
         <form onSubmit={onSubmit}>
@@ -29,7 +33,6 @@ export default function Login() {
         </form>
         {error && <p>{error}</p>}
       </div>
-      <button>Logout</button>
     </main>
   );
 }
