@@ -1,0 +1,44 @@
+{
+  "title": {
+    "span": "title",
+    "placeholder": "menu title",
+    "type": "text",
+    "required": true,
+    "autofocus": true
+  },
+  "info": {
+    "span": "short description",
+    "placeholder": "description",
+    "type": "text",
+    "required": true,
+    "autofocus": false
+  },
+  "price": {
+    "span": "price",
+    "placeholder": "price",
+    "type": "number",
+    "required": true,
+    "autofocus": false
+  },
+  "recipe": {
+    "span": "recipe",
+    "placeholder": "chicken, chips, salad",
+    "type": "text",
+    "required": true,
+    "autofocus": false
+  },
+  "thumbnail": {
+    "span": "thumbnail image",
+    "placeholder": "",
+    "type": "file",
+    "required": false,
+    "autofocus": false
+  },
+  "image": {
+    "span": "hero image",
+    "placeholder": "",
+    "type": "file",
+    "required": false,
+    "autofocus": false
+  }
+}
