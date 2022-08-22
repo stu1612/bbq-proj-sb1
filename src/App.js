@@ -1,30 +1,54 @@
 // npm
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// files
-import Admin from "./pages/Admin";
-import Contact from "./pages/Contact";
+// pages
 import Categories from "./pages/Categories";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Menu from "./pages/Menu";
-import ProductDetail from "./pages/ProductDetail";
-import "./styles/main.scss";
 import Navbar from "./components/Navbar";
+import ProductDetail from "./pages/ProductDetail";
+import Admin from "./pages/Admin";
+
+// routes
+import RoutesAdmin from "./routes/RoutesAdmin";
+import RoutesUser from "./routes/RoutesUser";
+
+import { useAuthContext } from "./hooks/useAuthContext";
+
+import "./styles/main.scss";
 
 export default function App() {
+  // properties
+  const { user, authIsReady } = useAuthContext();
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="menu/category/:title" element={<Categories />} />
-          <Route path="/product" element={<ProductDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </BrowserRouter>
+      {authIsReady && (
+        <BrowserRouter>
+          {/* {!user ? <RoutesUser /> : <RoutesAdmin />} */}
+          {!user && <Navbar />}
+          <Routes>
+            <Route
+              path="/"
+              element={!user ? <Home /> : <Navigate to="admin" />}
+            />
+            <Route path="menu" element={<Menu />} />
+            <Route path="menu/category/:title" element={<Categories />} />
+            <Route path="product" element={<ProductDetail />} />
+            <Route path="contact" element={<Contact />} />
+            <Route
+              path="login"
+              element={!user ? <Login /> : <Navigate to="admin" />}
+            />
+            <Route
+              path="login/admin"
+              element={user ? <Admin /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   );
 }
