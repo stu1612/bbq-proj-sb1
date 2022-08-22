@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // pages
+import Admin from "./pages/Admin";
 import Categories from "./pages/Categories";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -9,14 +10,9 @@ import Login from "./pages/Login";
 import Menu from "./pages/Menu";
 import Navbar from "./components/Navbar";
 import ProductDetail from "./pages/ProductDetail";
-import Admin from "./pages/Admin";
 
-// routes
-import RoutesAdmin from "./routes/RoutesAdmin";
-import RoutesUser from "./routes/RoutesUser";
-
+// files
 import { useAuthContext } from "./hooks/useAuthContext";
-
 import "./styles/main.scss";
 
 export default function App() {
@@ -27,13 +23,9 @@ export default function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          {/* {!user ? <RoutesUser /> : <RoutesAdmin />} */}
           {!user && <Navbar />}
           <Routes>
-            <Route
-              path="/"
-              element={!user ? <Home /> : <Navigate to="admin" />}
-            />
+            <Route path="/" element={<Home />} />
             <Route path="menu" element={<Menu />} />
             <Route path="menu/category/:title" element={<Categories />} />
             <Route path="product" element={<ProductDetail />} />
