@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // pages
 import Admin from "./pages/Admin";
+import AdminCategory from "./pages/AdminCategory";
 import Categories from "./pages/Categories";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -38,6 +39,10 @@ export default function App() {
             <Route
               path="login/admin"
               element={user ? <Admin /> : <Navigate to="/" />}
+            />
+            <Route
+              path="login/admin/category/:title"
+              element={<AdminCategory />}
             />
             <Route
               path="login/password_recovery"
