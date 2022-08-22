@@ -1,17 +1,22 @@
 // npm
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// files
 import useRecoverPassword from "../hooks/useRecoverPassword";
 
 export default function PasswordRecovery() {
   // local state
   const [email, setEmail] = useState("");
   // properties
-  const { recoverPassword, error, loading } = useRecoverPassword();
+  const navigate = useNavigate();
+  const { recoverPassword, error, loading, success } = useRecoverPassword();
 
   // methods
   function onHandleSubmit(event) {
     event.preventDefault();
     recoverPassword(email);
+    setEmail("");
   }
   return (
     <section id="login">
@@ -25,8 +30,10 @@ export default function PasswordRecovery() {
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
+        {success && <p>{success}</p>}
         {error && <p>{error}</p>}
       </form>
+      <button onClick={() => navigate(-1)}>go back</button>
     </section>
   );
 }
