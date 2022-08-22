@@ -1,5 +1,6 @@
 // npm
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // files
 import InputField from "../components/InputField";
@@ -33,6 +34,7 @@ export default function Login() {
         </form>
         {error && <p>{error}</p>}
       </div>
+      <Link to="password_recovery">Forgot Password</Link>
     </main>
   );
 }

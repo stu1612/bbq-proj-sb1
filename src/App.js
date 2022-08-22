@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Menu from "./pages/Menu";
 import Navbar from "./components/Navbar";
+import PasswordRecovery from "./pages/PasswordRecovery";
 import ProductDetail from "./pages/ProductDetail";
 
 // files
@@ -37,6 +38,10 @@ export default function App() {
             <Route
               path="login/admin"
               element={user ? <Admin /> : <Navigate to="/" />}
+            />
+            <Route
+              path="login/password_recovery"
+              element={<PasswordRecovery />}
             />
           </Routes>
         </BrowserRouter>
