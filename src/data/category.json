@@ -1,20 +1,20 @@
 {
   "title": {
-    "span": "title",
+    "label": "title",
     "placeholder": "menu title",
     "type": "text",
     "required": true,
     "autofocus": true
   },
   "info": {
-    "span": "long description",
+    "label": "long description",
     "placeholder": "description",
     "type": "text",
     "required": true,
     "autofocus": false
   },
   "thumbnail": {
-    "span": "",
+    "label": "",
     "placeholder": "",
     "type": "file",
     "required": false,
