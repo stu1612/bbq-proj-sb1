@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AdminProductItem({ item }) {
   const { subTitle, info, price, recipe } = item;
   return (

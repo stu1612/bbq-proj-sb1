@@ -12,6 +12,12 @@
   background-size: cover;
 }
 
+@mixin adminCardImg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
 @mixin media-xs {
   @media screen and (min-width: 400px) {
     @content;

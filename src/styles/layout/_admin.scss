@@ -1,22 +1,11 @@
 .admin {
-  width: min(80%, 1200px);
+  width: min(80%, 1600px);
   margin: 5rem auto;
   &__content {
-    margin: 5rem 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    // margin: 7rem auto;
-    // grid-gap: 5rem;
     .items {
       margin: 5rem 0;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
   }
 }

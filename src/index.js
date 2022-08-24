@@ -9,10 +9,10 @@ import { ModalProvider } from "./context/ModalContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <ModalProvider>
+    <ModalProvider>
+      <AuthContextProvider>
         <App />
-      </ModalProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </ModalProvider>
   </React.StrictMode>
 );

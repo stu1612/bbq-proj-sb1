@@ -1,25 +1,21 @@
-.card-item {
-  border: 2px solid #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 15px;
+@use "../abstracts" as a;
 
-  .cta-container {
-    display: block;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    // display: flex;
-    // justify-content: space-evenly;
-    // padding: 1rem;
-  }
+.card--item {
+  border: 1px solid a.$color-grey-300;
+  @include a.flex(column, center, center);
+  margin: 1rem;
+  border-radius: 16px;
+
   img {
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
+    @include a.adminCardImg;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    margin-bottom: 2rem;
+  }
+
+  &__links {
+    @include a.flex(row, center, space-evenly);
+    width: 100%;
+    padding: 3rem 0;
   }
 }

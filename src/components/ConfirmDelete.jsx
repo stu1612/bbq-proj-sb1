@@ -16,14 +16,14 @@ export default function ConfirmDelete({ path, id }) {
   }
 
   return (
-    <div>
-      <h3>Are you sure you wish to delete this item</h3>
+    <div className="delete">
+      <h1>Are you sure you wish to delete this item?</h1>
       <p>
         If <span>yes</span> then it means forever !!
       </p>
-      <div>
-        <button onClick={unSetModal}>No</button>
-        <button onClick={deleteItem}>Yes</button>
+      <div className="delete__buttons">
+        <button onClick={unSetModal}>Cancel</button>
+        <button onClick={deleteItem}>Yes, delete</button>
       </div>
     </div>
   );
