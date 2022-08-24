@@ -1,15 +1,30 @@
 // npm
 import { Link } from "react-router-dom";
 
+// files
+import useFirebase from "../hooks/useFirebase";
+
 export default function AdminCategoryItem({ item }) {
-  const { title, info } = item;
+  // properties
+  const { title, info, thumbnail, id } = item;
+  const { deleteDocument } = useFirebase();
+
+  const path = "menu/categories/content";
+
+  // method
+  // async function handleClick(id) {
+  //   await deleteDocument(path, id);
+  // }
+
   return (
     <div>
       <h2>{title}</h2>
       <p>{info}</p>
+      <img src={thumbnail} alt={title} />
       <Link to={`./category/${title}`}>
         <button>next</button>
       </Link>
+      <button onClick={() => deleteDocument(path, id)}>delete</button>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 // files
 import InputField from "../components/InputField";
 import data from "../data/product.json";
-import useCreate from "../hooks/useCreateDocs";
+import useFirebase from "../hooks/useFirebase";
 
 export default function ProductForm() {
   // local state
@@ -17,7 +17,7 @@ export default function ProductForm() {
   const [image, setImage] = useState("");
 
   // properties
-  const { addDocumentToCollection, response } = useCreate();
+  const { addDocument, response } = useFirebase();
   const { title } = useParams();
   const path = `menu/categories/content/${title}/content`;
 
@@ -26,7 +26,7 @@ export default function ProductForm() {
     event.preventDefault();
     const id = subTitle;
     const doc = { subTitle, info, price, recipe, thumbnail, image };
-    addDocumentToCollection(path, id, doc);
+    addDocument(path, id, doc);
   }
 
   useEffect(() => {

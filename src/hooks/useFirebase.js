@@ -1,6 +1,6 @@
 //npm
 import { useReducer } from "react";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, deleteDoc } from "firebase/firestore";
 
 // files
 import { fireStore } from "../firebase/firebase";
@@ -14,7 +14,7 @@ const initState = {
 };
 
 // reducer method
-function createReducer(state, action) {
+function firebaseReducer(state, action) {
   switch (action.type) {
     case "IS_PENDING": {
       return { document: null, isLoading: true, error: null, success: null };
@@ -27,6 +27,8 @@ function createReducer(state, action) {
         success: true,
       };
     }
+    case "DELETE_DOC":
+      return { isPending: false, document: null, success: true, error: null };
     case "ERROR": {
       return {
         document: null,
@@ -40,10 +42,11 @@ function createReducer(state, action) {
   }
 }
 
-export default function useCreate() {
-  const [response, dispatch] = useReducer(createReducer, initState);
+export default function useFirebase() {
+  const [response, dispatch] = useReducer(firebaseReducer, initState);
 
-  async function addDocumentToCollection(path, id, data) {
+  // add doc
+  async function addDocument(path, id, data) {
     dispatch({ type: "IS_PENDING" });
     try {
       const ref = doc(fireStore, path, id);
@@ -54,5 +57,17 @@ export default function useCreate() {
     }
   }
 
-  return { addDocumentToCollection, response };
+  // delete doc
+  async function deleteDocument(path, id) {
+    dispatch({ type: "IS_PENDING" });
+    try {
+      const ref = doc(fireStore, path, id);
+      await deleteDoc(ref);
+      dispatch({ type: "DELETE_DOC" });
+    } catch (err) {
+      dispatch({ type: "ERROR", payload: "Could not delete" });
+    }
+  }
+
+  return { addDocument, deleteDocument, response };
 }
