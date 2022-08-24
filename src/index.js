@@ -4,12 +4,15 @@ import App from "./App";
 
 // files
 import AuthContextProvider from "./context/AuthContext";
+import { ModalProvider } from "./context/ModalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <ModalProvider>
+        <App />
+      </ModalProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

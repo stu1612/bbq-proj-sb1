@@ -3,11 +3,13 @@ import useLogout from "../hooks/useLogout";
 import useCollection from "../hooks/useCollection";
 import AdminCategoryItem from "../components/AdminCategoryItem";
 import CategoryForm from "../components/CategoryForm";
+import { useModal } from "../context/ModalContext";
 
 export default function Admin() {
   // properties
   const { logout } = useLogout();
   const { documents, error } = useCollection("menu/categories/content");
+  const { setModal } = useModal();
 
   // components
   const CategoryList =
@@ -28,10 +30,13 @@ export default function Admin() {
       {error && <p>{error}</p>}
       {documents && documents.length === 0 && <p>There are no items created</p>}
       <section className="admin__content">
-        <aside className="items">{CategoryList}</aside>
-        {/* <aside className="admin-form">
-          <CategoryForm />
-        </aside> */}
+        <button
+          onClick={() => setModal(<CategoryForm />)}
+          className="open-modal"
+        >
+          +
+        </button>
+        <div className="items">{CategoryList}</div>
       </section>
 
       <button onClick={logout}>Logout</button>

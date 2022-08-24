@@ -11,11 +11,6 @@ export default function AdminCategoryItem({ item }) {
 
   const path = "menu/categories/content";
 
-  // method
-  // async function handleClick(id) {
-  //   await deleteDocument(path, id);
-  // }
-
   return (
     <div className="card-item">
       <h2>{title}</h2>

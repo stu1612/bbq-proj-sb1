@@ -1,21 +1,36 @@
+@use "../abstracts" as a;
+
 #modal {
   z-index: 1;
 }
 
 .modal__background {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: black;
-  opacity: 0.5;
+  inset: 0;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8) 30%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  transition: all 0.3s ease-in-out;
 }
 
 .modal__content {
   position: fixed;
+  z-index: 20;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background: a.$accent-color-blue;
+  border: 3px solid darken(a.$accent-color-blue, 1%);
+  width: min(95%, 400px);
+  padding: 3rem;
+  border-radius: 16px;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.modal__button {
+  position: absolute;
+  top: -30px;
+  left: -30px;
 }

@@ -1,0 +1,37 @@
+@use "../abstracts" as a;
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin: 2rem 0;
+    border: 2px solid a.$color-grey-900;
+    padding: 2rem;
+    border-radius: 16px;
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  span {
+    font-size: 1.6rem;
+    color: a.$color-grey-900;
+  }
+}
+
+input {
+  border: 0;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  &::placeholder {
+    color: lighten(a.$color-grey-900, 60%);
+    opacity: 1; /* Firefox */
+  }
+}
