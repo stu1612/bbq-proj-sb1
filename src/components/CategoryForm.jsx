@@ -6,6 +6,7 @@ import { createFile } from "../firebase/cloudStorage";
 import data from "../data/category.json";
 import InputField from "../components/InputField";
 import useFirebase from "../hooks/useFirebase";
+import { useModal } from "../context/ModalContext";
 
 export default function CategoryForm() {
   // local state
@@ -16,10 +17,11 @@ export default function CategoryForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isValid, setIsValid] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
 
   // properties
   const { addDocument, response } = useFirebase();
-
+  const { unSetModal } = useModal();
   const path = "menu/categories/content";
   const imgPath = `assets/image-${title}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
@@ -42,7 +44,8 @@ export default function CategoryForm() {
     async function loadImage(ref) {
       if (file) {
         await createFile(ref, file).then((res) => setThumbnail(res));
-      } else setThumbnail(null);
+        setIsUploaded(true);
+      }
     }
     loadImage(imgPath);
   }, [file]);
@@ -60,13 +63,15 @@ export default function CategoryForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    const id = title;
-    const doc = { title, info, thumbnail };
+
     try {
-      if (isValid) {
+      if (isValid && isUploaded) {
+        const id = title;
+        const doc = { title, info, thumbnail };
         await addDocument(path, id, doc);
         setLoading(false);
         setError(null);
+        unSetModal();
       }
     } catch (err) {
       setError(err);
