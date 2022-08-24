@@ -15,6 +15,7 @@ export default function CategoryForm() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isValid, setIsValid] = useState(null);
   // const [error, setError] = useState(null);
 
   const path = "menu/categories/content";
@@ -23,26 +24,30 @@ export default function CategoryForm() {
   // properties
   const { addDocument, response } = useFirebase();
 
-  // const types = ["image/png", "image/jpeg", "image/jpg"];
+  const types = ["image/png", "image/jpeg", "image/jpg"];
 
   function fileHandler(event) {
     let selected = event.target.files[0];
-    if (selected) {
+    if (selected && types.includes(selected.type)) {
+      setIsValid(true);
       setFile(selected);
+      setError("");
     } else {
+      setIsValid(null);
       setFile(null);
+      setError("Please select valid file input (png or jpg)");
     }
   }
 
   useEffect(() => {
     async function loadImage(path) {
       // const imgPath = `assets/image-${title}.png`;
-      if (file) {
+      if (isValid) {
         await createFile(path, file).then((res) => setThumbnail(res));
-      } else return;
+      } else setThumbnail(null);
     }
     loadImage(`assets/image-${title}.png`);
-  }, [file]);
+  }, [isValid]);
 
   useEffect(() => {
     if (response.success) {
@@ -58,16 +63,12 @@ export default function CategoryForm() {
     setLoading(true);
     const id = title;
     const doc = { title, info, thumbnail };
-    // const imgPath = `assets/image-${title}.png`;
-
     try {
-      // const imgPath = `assets/image-${title}.png`;
-      // await createFile(imgPath, file).then((res) => setThumbnail(res));
-      // const id = title;
-      // const doc = { title, info, thumbnail };
-      await addDocument(path, id, doc);
-      setLoading(false);
-      setError(null);
+      if (isValid) {
+        await addDocument(path, id, doc);
+        setLoading(false);
+        setError(null);
+      }
     } catch (err) {
       setError(err);
       setLoading(false);
@@ -81,6 +82,7 @@ export default function CategoryForm() {
       <InputField setup={data.info} state={[info, setInfo]} />
       <input type="file" accept="/image/*" onChange={fileHandler} required />
       <button>Submit</button>
+      {error && <p>{error}</p>}
     </form>
   );
 }
