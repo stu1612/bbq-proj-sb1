@@ -7,9 +7,17 @@
 .modal__background {
   position: fixed;
   inset: 0;
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.8) 30%,
-    rgba(255, 255, 255, 1) 100%
+  // background: linear-gradient(
+  //   rgba(255, 255, 255, 0.8) 30%,
+  //   rgba(255, 255, 255, 1) 100%
+  // );
+  background-image: linear-gradient(
+    to right top,
+    #1d1d2c,
+    #2d3f57,
+    #316682,
+    #2e90a8,
+    #3cbcc3
   );
   transition: all 0.3s ease-in-out;
 }
@@ -20,8 +28,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: a.$accent-color-blue;
-  border: 3px solid darken(a.$accent-color-blue, 1%);
+  background-color: lighten(transparent, 50%);
+  border: 1px solid lighten(a.$color-grey-900, 10%);
   width: min(95%, 400px);
   padding: 3rem;
   border-radius: 16px;

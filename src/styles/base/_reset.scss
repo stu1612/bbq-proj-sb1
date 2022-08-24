@@ -62,6 +62,12 @@ textarea {
   user-select: auto;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
 textarea {
   white-space: revert;
 }

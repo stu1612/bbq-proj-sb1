@@ -1,3 +1,7 @@
+// npm
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+
 // files
 import useLogout from "../hooks/useLogout";
 import useCollection from "../hooks/useCollection";
@@ -30,11 +34,8 @@ export default function Admin() {
       {error && <p>{error}</p>}
       {documents && documents.length === 0 && <p>There are no items created</p>}
       <section className="admin__content">
-        <button
-          onClick={() => setModal(<CategoryForm />)}
-          className="open-modal"
-        >
-          +
+        <button onClick={() => setModal(<CategoryForm />)}>
+          <FontAwesomeIcon icon={faCirclePlus} color="#3cbcc3" size="3x" />
         </button>
         <div className="items">{CategoryList}</div>
       </section>

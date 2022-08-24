@@ -11,9 +11,11 @@
   .cta-container {
     display: block;
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // display: flex;
+    // justify-content: space-evenly;
+    // padding: 1rem;
   }
   img {
     width: 200px;
