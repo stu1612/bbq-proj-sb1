@@ -2,9 +2,11 @@
   width: min(80%, 1200px);
   margin: 5rem auto;
   &__content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin: 7rem auto;
-    grid-gap: 5rem;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    // margin: 7rem auto;
+    // grid-gap: 5rem;
+    display: flex;
+    flex-direction: row;
   }
 }

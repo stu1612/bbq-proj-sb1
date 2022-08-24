@@ -29,9 +29,9 @@ export default function Admin() {
       {documents && documents.length === 0 && <p>There are no items created</p>}
       <section className="admin__content">
         <aside className="items">{CategoryList}</aside>
-        <aside className="admin-form">
+        {/* <aside className="admin-form">
           <CategoryForm />
-        </aside>
+        </aside> */}
       </section>
 
       <button onClick={logout}>Logout</button>

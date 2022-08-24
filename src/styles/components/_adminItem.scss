@@ -1,0 +1,23 @@
+.card-item {
+  border: 2px solid #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 15px;
+
+  .cta-container {
+    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+  }
+  img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}

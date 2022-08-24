@@ -17,14 +17,16 @@ export default function AdminCategoryItem({ item }) {
   // }
 
   return (
-    <div>
+    <div className="card-item">
       <h2>{title}</h2>
       <p>{info}</p>
       <img src={thumbnail} alt={title} />
-      <Link to={`./category/${title}`}>
-        <button>next</button>
-      </Link>
-      <button onClick={() => deleteDocument(path, id)}>delete</button>
+      <div className="cta-container">
+        <Link to={`./category/${title}`}>
+          <button>next</button>
+        </Link>
+        <button onClick={() => deleteDocument(path, id)}>delete</button>
+      </div>
     </div>
   );
 }
