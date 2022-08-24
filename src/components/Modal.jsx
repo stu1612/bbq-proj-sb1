@@ -1,7 +1,6 @@
 // npm
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-// import { useContext } from "react";
 import { createPortal } from "react-dom";
 
 export default function Modal({ modal, unSetModal }) {
