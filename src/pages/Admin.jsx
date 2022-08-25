@@ -1,19 +1,14 @@
-// npm
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-
 // files
 import useLogout from "../hooks/useLogout";
 import useCollection from "../hooks/useCollection";
 import AdminCategoryItem from "../components/AdminCategoryItem";
 import CategoryForm from "../components/CategoryForm";
-import { useModal } from "../context/ModalContext";
+import OpenFormButton from "../components/OpenFormButton";
 
 export default function Admin() {
   // properties
   const { logout } = useLogout();
   const { documents, error } = useCollection("menu/categories/content");
-  const { setModal } = useModal();
 
   // components
   const CategoryList =
@@ -34,12 +29,9 @@ export default function Admin() {
       {error && <p>{error}</p>}
       {documents && documents.length === 0 && <p>There are no items created</p>}
       <section className="admin__content">
-        <button onClick={() => setModal(<CategoryForm />)}>
-          <FontAwesomeIcon icon={faCirclePlus} color="#3cbcc3" size="3x" />
-        </button>
+        <OpenFormButton form={<CategoryForm />} />
         <div className="items">{CategoryList}</div>
       </section>
-
       <button onClick={logout}>Logout</button>
     </main>
   );
