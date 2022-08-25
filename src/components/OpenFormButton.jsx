@@ -9,8 +9,13 @@ export default function OpenFormButton({ form }) {
   // properties
   const { setModal } = useModal();
   return (
-    <button onClick={() => setModal(form)}>
-      <FontAwesomeIcon icon={faCirclePlus} color="#3cbcc3" size="3x" />
-    </button>
+    <div
+      className="open-form"
+      style={{ marginTop: "5rem", textAlign: "center" }}
+    >
+      <button onClick={() => setModal(form)}>
+        <FontAwesomeIcon icon={faCirclePlus} color="#3cbcc3" size="3x" />
+      </button>
+    </div>
   );
 }

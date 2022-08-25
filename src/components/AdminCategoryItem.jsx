@@ -11,6 +11,9 @@ import {
 import { useModal } from "../context/ModalContext";
 import ConfirmDelete from "./ConfirmDelete";
 import AdminCategoryDetail from "./AdminCategoryDetail";
+import TrashIcon from "./TrashIcon";
+import LinkIcon from "./LinkIcon";
+import OpenIcon from "./OpenIcon";
 
 export default function AdminCategoryItem({ item }) {
   // properties
@@ -25,23 +28,26 @@ export default function AdminCategoryItem({ item }) {
       <img src={thumbnail} alt={title} />
       <h2>{title}</h2>
       <div className="card--item__links">
-        <button onClick={() => setModal(<AdminCategoryDetail item={item} />)}>
+        {/* <button onClick={() => setModal(<AdminCategoryDetail item={item} />)}>
           <FontAwesomeIcon icon={faBoxOpen} color="#eba63f" size="2x" />
-        </button>
-        <Link to={`./category/${title}`}>
+        </button> */}
+        {/* <Link to={`./category/${title}`}>
           <FontAwesomeIcon
             icon={faArrowRightToFile}
             color="#3cbcc3"
             size="2x"
           />
-        </Link>
-        <button
+        </Link> */}
+        {/* <button
           onClick={() =>
             setModal(<ConfirmDelete id={id} path={path} imgPath={imgPath} />)
           }
         >
           <FontAwesomeIcon icon={faTrashAlt} color="#e40c2b" size="2x" />
-        </button>
+        </button> */}
+        <OpenIcon item={item} />
+        <LinkIcon route={`./category/${title}`} />
+        <TrashIcon id={id} path={path} imgPath={imgPath} />
       </div>
     </div>
   );
