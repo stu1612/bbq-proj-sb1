@@ -1,10 +1,8 @@
 // npm
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 
 // files
 import { createFile } from "../firebase/cloudStorage";
-import slugify from "../scripts/slugify";
 import InputField from "../components/InputField";
 import data from "../data/product.json";
 import useFirebase from "../hooks/useFirebase";
@@ -26,15 +24,11 @@ export default function ProductForm({ title }) {
   // properties
   const { addDocument, response } = useFirebase();
   const { unSetModal } = useModal();
-  // const { title } = useParams();
-  console.log(title);
-  // const slugTitle = slugify(.toLowerCase(title));
   const path = `menu/categories/content/${title}/content`;
   const imgPath = `assets/products/image-${subTitle}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
 
   // methods
-
   function fileHandler(event) {
     let selected = event.target.files[0];
     if (selected && types.includes(selected.type)) {

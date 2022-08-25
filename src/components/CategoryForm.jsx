@@ -88,7 +88,7 @@ export default function CategoryForm() {
       <InputField setup={data.title} state={[title, setTitle]} />
       <InputField setup={data.info} state={[info, setInfo]} />
       <input type="file" accept="/image/*" onChange={fileHandler} required />
-      <button>Submit</button>
+      {isUploaded ? <button>Submit</button> : <button disabled>Loading</button>}
       {error && <p>{error}</p>}
     </form>
   );
