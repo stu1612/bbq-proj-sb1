@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 
 // files
+import slugify from "../scripts/slugify";
 import { createFile } from "../firebase/cloudStorage";
 import data from "../data/category.json";
 import InputField from "../components/InputField";
@@ -26,6 +27,7 @@ export default function CategoryForm() {
   const imgPath = `assets/image-${title}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
 
+  // methods
   function fileHandler(event) {
     let selected = event.target.files[0];
     if (selected && types.includes(selected.type)) {
@@ -66,7 +68,7 @@ export default function CategoryForm() {
 
     try {
       if (isValid && isUploaded) {
-        const id = title;
+        const id = slugify(title);
         const doc = { title, info, thumbnail };
         await addDocument(path, id, doc);
         setLoading(false);

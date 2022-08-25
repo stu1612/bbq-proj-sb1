@@ -1,34 +1,65 @@
 // npm
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 // files
+import { createFile } from "../firebase/cloudStorage";
+import slugify from "../scripts/slugify";
 import InputField from "../components/InputField";
 import data from "../data/product.json";
 import useFirebase from "../hooks/useFirebase";
+import { useModal } from "../context/ModalContext";
 
-export default function ProductForm() {
+export default function ProductForm({ title }) {
   // local state
-  const [subTitle, setSubTitle] = useState("");
-  const [info, setInfo] = useState("");
-  const [price, setPrice] = useState("");
-  const [recipe, setRecipe] = useState("");
+  const [subTitle, setSubTitle] = useState("beef macka");
+  const [info, setInfo] = useState("some text");
+  const [price, setPrice] = useState("185");
+  const [recipe, setRecipe] = useState("salad, bread, beef, mustard");
   const [thumbnail, setThumbnail] = useState("");
-  const [image, setImage] = useState("");
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isValid, setIsValid] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
 
   // properties
   const { addDocument, response } = useFirebase();
-  const { title } = useParams();
+  const { unSetModal } = useModal();
+  // const { title } = useParams();
+  console.log(title);
+  // const slugTitle = slugify(.toLowerCase(title));
   const path = `menu/categories/content/${title}/content`;
+  const imgPath = `assets/products/image-${subTitle}.png`;
+  const types = ["image/png", "image/jpeg", "image/jpg"];
 
   // methods
-  function handleSubmit(event) {
-    event.preventDefault();
-    const id = subTitle;
-    const doc = { subTitle, info, price, recipe, thumbnail, image };
-    addDocument(path, id, doc);
+
+  function fileHandler(event) {
+    let selected = event.target.files[0];
+    if (selected && types.includes(selected.type)) {
+      setIsValid(true);
+      setFile(selected);
+      setError("");
+    } else {
+      setIsValid(null);
+      setFile(null);
+      setError("Please select valid file input (png or jpg)");
+    }
   }
 
+  // upload file img to cloud storage when file dependancy changes and then set value to thumbnail state
+  useEffect(() => {
+    async function loadImage(ref) {
+      if (file) {
+        await createFile(ref, file).then((res) => setThumbnail(res));
+        setIsUploaded(true);
+      }
+    }
+    loadImage(imgPath);
+  }, [file]);
+
+  // if dispatch is success then reset values
   useEffect(() => {
     if (response.success) {
       setSubTitle("");
@@ -38,15 +69,35 @@ export default function ProductForm() {
     }
   }, [response.success]);
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      if (isValid && isUploaded) {
+        const id = subTitle;
+        const doc = { subTitle, info, price, recipe, thumbnail };
+        await addDocument(path, id, doc);
+        setLoading(false);
+        setError(null);
+        unSetModal();
+      }
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+      console.log(err.message);
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit}>
+      {loading && <p>Loading ...</p>}
       <InputField setup={data.title} state={[subTitle, setSubTitle]} />
       <InputField setup={data.info} state={[info, setInfo]} />
       <InputField setup={data.price} state={[price, setPrice]} />
       <InputField setup={data.recipe} state={[recipe, setRecipe]} />
-      <InputField setup={data.thumbnail} state={[thumbnail, setThumbnail]} />
-      <InputField setup={data.image} state={[image, setImage]} />
+      <input type="file" accept="/image/*" onChange={fileHandler} required />
       <button>Submit</button>
+      {error && <p>{error}</p>}
     </form>
   );
 }
