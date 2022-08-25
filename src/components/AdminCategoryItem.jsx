@@ -18,6 +18,7 @@ export default function AdminCategoryItem({ item }) {
   const { setModal } = useModal();
 
   const path = "menu/categories/content";
+  const imgPath = `assets/image-${title}.png`;
 
   return (
     <div className="card--item">
@@ -34,7 +35,11 @@ export default function AdminCategoryItem({ item }) {
             size="2x"
           />
         </Link>
-        <button onClick={() => setModal(<ConfirmDelete id={id} path={path} />)}>
+        <button
+          onClick={() =>
+            setModal(<ConfirmDelete id={id} path={path} imgPath={imgPath} />)
+          }
+        >
           <FontAwesomeIcon icon={faTrashAlt} color="#e40c2b" size="2x" />
         </button>
       </div>

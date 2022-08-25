@@ -3,14 +3,16 @@ import { useModal } from "../context/ModalContext";
 
 // files
 import useFirebase from "../hooks/useFirebase";
+import { deleteFile } from "../firebase/cloudStorage";
 
-export default function ConfirmDelete({ path, id }) {
+export default function ConfirmDelete({ path, imgPath, id }) {
   // properties
   const { deleteDocument } = useFirebase();
   const { unSetModal } = useModal();
 
   // method
-  function deleteItem() {
+  async function deleteItem() {
+    await deleteFile(imgPath);
     deleteDocument(path, id);
     unSetModal();
   }
