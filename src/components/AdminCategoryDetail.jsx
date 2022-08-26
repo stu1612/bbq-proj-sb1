@@ -15,7 +15,7 @@ export default function AdminCategoryDetail({ item }) {
         </h2>
       )}
       <p>Info: {info}</p>
-      <p>Recipe: {recipe}</p>
+      {recipe && <p>Recipe: {recipe}</p>}
     </div>
   );
 }

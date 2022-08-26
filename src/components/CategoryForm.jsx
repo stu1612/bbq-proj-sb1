@@ -8,6 +8,7 @@ import data from "../data/category.json";
 import InputField from "../components/InputField";
 import useFirebase from "../hooks/useFirebase";
 import { useModal } from "../context/ModalContext";
+// import useStorage from "../hooks/useStorage";
 
 export default function CategoryForm() {
   // local state
@@ -22,6 +23,7 @@ export default function CategoryForm() {
 
   // properties
   const { addDocument, response } = useFirebase();
+  // const { uploadFile, progress, url } = useStorage();
   const { unSetModal } = useModal();
   const path = "menu/categories/content";
   const imgPath = `assets/image-${title}.png`;
@@ -67,6 +69,7 @@ export default function CategoryForm() {
     setLoading(true);
 
     try {
+      // if (isValid && isUploaded) {
       if (isValid && isUploaded) {
         const id = slugify(title);
         const doc = { title, info, thumbnail };

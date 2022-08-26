@@ -12,6 +12,7 @@ export default function Login() {
   // local state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   // properties
   const { login, error, loading } = useLogin();
   const { user } = useAuthContext();
