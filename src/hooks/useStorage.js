@@ -1,71 +1,73 @@
 // npm
-import { useState, useEffect } from "react";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
-import { addDoc } from "firebase/firestore";
+import { useReducer } from "react";
+import { getDownloadURL, uploadBytes, deleteObject } from "firebase/storage";
+import { ref } from "firebase/storage";
 
 // files
-import { storage, fireStore } from "../firebase/firebase";
-import { collection } from "firebase/firestore";
+import { storage } from "../firebase/firebase";
 
-export default function useStorage(file, path) {
-  const [progress, setProgress] = useState(0);
-  const [error, setError] = useState(null);
-  const [url, setURL] = useState(null);
+// properties
+const initState = {
+  document: null,
+  isLoading: false,
+  error: null,
+  success: null,
+};
 
-  // useEffect(() => {
-  //   async function createFile(path) {
-  //     const storageRef = ref(storage, file);
-  //     await uploadBytes(storageRef, file);
-  //     return await getDownloadURL(storageRef);
-  //   }
-  //   createFile(path);
-  // }, [file]);
+function storageReducer(state, action) {
+  switch (action.type) {
+    case "IS_PENDING": {
+      return { document: null, isLoading: true, error: null, success: null };
+    }
+    case "UPLOAD_FILE": {
+      return {
+        document: action.payload,
+        isLoading: false,
+        error: null,
+        success: true,
+      };
+    }
+    case "DELETE_FILE":
+      return { isPending: false, document: null, success: true, error: null };
+    case "ERROR": {
+      return {
+        document: null,
+        isLoading: false,
+        error: action.payload,
+        success: null,
+      };
+    }
+    default:
+      return state;
+  }
+}
 
-  useEffect(() => {
-    const storageRef = ref(storage, file);
-    const collectionRef = collection(fireStore, path);
+export default function useStorage() {
+  const [res, dispatch] = useReducer(storageReducer, initState);
 
-    const uploadTask = uploadBytesResumable(storageRef);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(percent);
-      },
-      (err) => setError(err.message),
-      () => {
-        const url = getDownloadURL(uploadTask.snapshot.ref);
-        addDoc(collectionRef, { url });
-        setURL(url);
-      }
-    );
-  }, [file, path]);
+  // upload file to storage
+  async function createFile(path, file) {
+    dispatch({ type: "IS_PENDING" });
+    try {
+      const fileReference = ref(storage, path);
+      await uploadBytes(fileReference, file);
+      const document = await getDownloadURL(fileReference);
+      dispatch({ type: "UPLOAD_FILE", payload: document });
+    } catch (err) {
+      dispatch({ type: "ERROR", payload: err.message });
+    }
+  }
 
-  // async function uploadFile(file, path) {
-  //   const storageRef = ref(storage, path);
-  //   const uploadTask = uploadBytesResumable(storageRef, file);
-  //   uploadTask.on(
-  //     "state_changed",
-  //     (snapshot) => {
-  //       const percent = Math.round(
-  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //       );
-  //       setProgress(percent);
-  //     },
-  //     (err) => setError(err.message),
-  //     () => {
-  //       getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-  //         setURL(url);
-  //       });
-  //     }
-  //   );
-  // }
-  return { progress, url, error };
+  // delete file from storage
+  async function deleteFile(path) {
+    dispatch({ type: "IS_PENDING" });
+    try {
+      const fileReference = ref(storage, path);
+      const document = await deleteObject(fileReference);
+      dispatch({ type: "DELETE_FILE", payload: document });
+    } catch (err) {
+      dispatch({ type: "ERROR", payload: err.message });
+    }
+  }
+  return { createFile, deleteFile, res };
 }
