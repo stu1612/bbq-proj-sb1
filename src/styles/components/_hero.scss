@@ -14,5 +14,7 @@
   }
   &__menu {
     background-image: url("../../assets/images/menu_banner.jpg");
+    background-blend-mode: color-dodge;
+    background-color: rgb(37, 34, 34);
   }
 }

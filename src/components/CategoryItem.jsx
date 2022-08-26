@@ -15,7 +15,7 @@ export default function CategoryItem({ item }) {
           <p>{body}</p>
         </div>
         <Link to={`category/${title}`}>
-          <button>see more</button>
+          <button className="btn">see more</button>
         </Link>
       </div>
     </div>

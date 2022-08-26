@@ -1,11 +1,12 @@
 // files
-import ProductItem from "../components/ProductItem";
+// import ProductItem from "../components/ProductItem";
+import FeatureItem from "../components/FeatureItem";
 import data from "../data/dummyCat.json";
 
 export default function Categories() {
   // componnets
   const ProductList = data.map((item) => (
-    <ProductItem key={item.id} item={item} />
+    <FeatureItem key={item.id} item={item} />
   ));
   return (
     <div>

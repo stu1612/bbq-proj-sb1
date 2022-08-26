@@ -49,6 +49,12 @@
 }
 
 @mixin media-xxl {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin media-xxxl {
   @media screen and (min-width: 1600px) {
     @content;
   }

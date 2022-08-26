@@ -7,7 +7,7 @@ export default function ProductItem({ item }) {
         <img src={require(`../assets/images/${img}`)} alt={title} />
       </div>
       <div className="product">
-        <h2 className="heading-title">{title}</h2>
+        <h2 className="heading-title">{title} : 185 sek</h2>
         <div className="product--text">
           <p>{body}</p>
         </div>

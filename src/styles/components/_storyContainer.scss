@@ -7,8 +7,7 @@
   grid-template-areas: "one" "two";
 
   &:nth-child(1) {
-    background: a.$accent-color-yellow;
-    color: a.$color-grey-900;
+    background: a.$accent-color-grey;
   }
   &:nth-child(3) {
     @extend :nth-child(1);
@@ -18,10 +17,6 @@
     @include a.flex(column, flex-start, center);
     padding: 5rem;
     grid-area: one;
-
-    // h2 {
-    //   margin-bottom: 4rem;
-    // }
   }
 
   &__image {
@@ -55,6 +50,11 @@
     &:nth-child(3) {
       grid-template-areas: "one two ";
     }
+
+    &__image {
+      height: auto;
+    }
+
     .about {
       width: 600px;
     }

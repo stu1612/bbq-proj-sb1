@@ -3,16 +3,18 @@
 @import "./base/typography";
 
 // components
-@import "./components/modal";
-@import "./components/storyContainer";
-@import "./components/hero";
-@import "./components/navbar";
 @import "./components/adminItem";
 @import "./components/buttons";
 @import "./components/confirmDelete";
+@import "./components/featureItem";
+@import "./components/hero";
+@import "./components/modal";
+@import "./components/navbar";
+@import "./components/storyContainer";
 // layout
-@import "./layout/cards";
 @import "./layout/admin";
+@import "./layout/cards";
 @import "./layout/form";
+@import "./layout/sections";
 // pages
 @import "./pages/login";
