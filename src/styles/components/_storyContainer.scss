@@ -6,10 +6,22 @@
   margin: 0 auto;
   grid-template-areas: "one" "two";
 
+  &:nth-child(1) {
+    background: a.$accent-color-yellow;
+    color: a.$color-grey-900;
+  }
+  &:nth-child(3) {
+    @extend :nth-child(1);
+  }
+
   &__body {
     @include a.flex(column, flex-start, center);
-    padding: 0 5rem;
+    padding: 5rem;
     grid-area: one;
+
+    // h2 {
+    //   margin-bottom: 4rem;
+    // }
   }
 
   &__image {

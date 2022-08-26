@@ -9,7 +9,7 @@ export default function StoryContainer({ story }) {
           <p>{text_2}</p>
           <p>{text_3}</p>
         </div>
-        {btn && <button>{btn}</button>}
+        {btn && <button className="btn">{btn}</button>}
       </div>
       <div className={`story__image ${imgPath}`} />
     </div>
