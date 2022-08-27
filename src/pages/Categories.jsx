@@ -1,8 +1,8 @@
-// files
-// import ProductItem from "../components/ProductItem";
+// npm
 import { useParams } from "react-router-dom";
-import useCollection from "../hooks/useCollection";
 
+// files
+import useCollection from "../hooks/useCollection";
 import FeatureItem from "../components/FeatureItem";
 
 export default function Categories() {

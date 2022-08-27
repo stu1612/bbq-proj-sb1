@@ -2,18 +2,17 @@
 import { useState, useEffect } from "react";
 
 // files
-import { createFile } from "../firebase/cloudStorage";
-import InputField from "../components/InputField";
-import data from "../data/product.json";
-import useFirebase from "../hooks/useFirebase";
-import { useModal } from "../context/ModalContext";
+import slugify from "../../scripts/slugify";
+import { createFile } from "../../firebase/cloudStorage";
+import data from "../../data/category.json";
+import InputField from "../InputField";
+import useFirebase from "../../hooks/useFirebase";
+import { useModal } from "../../context/ModalContext";
 
-export default function ProductForm({ title }) {
+export default function CategoryForm() {
   // local state
-  const [subTitle, setSubTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [info, setInfo] = useState("");
-  const [price, setPrice] = useState("");
-  const [recipe, setRecipe] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -24,8 +23,8 @@ export default function ProductForm({ title }) {
   // properties
   const { addDocument, response } = useFirebase();
   const { unSetModal } = useModal();
-  const path = `menu/categories/content/${title}/content`;
-  const imgPath = `assets/products/image-${subTitle}.png`;
+  const path = "menu/categories/content";
+  const imgPath = `assets/image-${title}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
 
   // methods
@@ -56,20 +55,21 @@ export default function ProductForm({ title }) {
   // if dispatch is success then reset values
   useEffect(() => {
     if (response.success) {
-      setSubTitle("");
+      setTitle("");
       setInfo("");
-      setPrice("");
-      setRecipe("");
+      setFile(null);
     }
   }, [response.success]);
 
+  // if file input is valid then dispatch payload to database
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
+
     try {
       if (isValid && isUploaded) {
-        const id = subTitle;
-        const doc = { subTitle, info, price, recipe, thumbnail };
+        const id = slugify(title);
+        const doc = { title, info, thumbnail };
         await addDocument(path, id, doc);
         setLoading(false);
         setError(null);
@@ -85,12 +85,10 @@ export default function ProductForm({ title }) {
   return (
     <form onSubmit={handleSubmit}>
       {loading && <p>Loading ...</p>}
-      <InputField setup={data.title} state={[subTitle, setSubTitle]} />
+      <InputField setup={data.title} state={[title, setTitle]} />
       <InputField setup={data.info} state={[info, setInfo]} />
-      <InputField setup={data.price} state={[price, setPrice]} />
-      <InputField setup={data.recipe} state={[recipe, setRecipe]} />
       <input type="file" accept="/image/*" onChange={fileHandler} required />
-      <button>Submit</button>
+      {isUploaded ? <button>Submit</button> : <button disabled>Loading</button>}
       {error && <p>{error}</p>}
     </form>
   );

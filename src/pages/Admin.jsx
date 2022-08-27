@@ -2,7 +2,7 @@
 import useLogout from "../hooks/useLogout";
 import useCollection from "../hooks/useCollection";
 import AdminCategoryItem from "../components/AdminCategoryItem";
-import CategoryForm from "../components/CategoryForm";
+import CategoryForm from "../components/forms/CategoryForm";
 import OpenFormButton from "../components/OpenFormButton";
 
 export default function Admin() {

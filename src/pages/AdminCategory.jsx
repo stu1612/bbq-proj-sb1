@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // files
 import useCollection from "../hooks/useCollection";
 import AdminProductItem from "../components/AdminProductItem";
-import ProductForm from "../components/ProductForm";
+import ProductForm from "../components/forms/ProductForm";
 import OpenFormButton from "../components/OpenFormButton";
 
 export default function AdminCategory() {
