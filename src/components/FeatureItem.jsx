@@ -1,23 +1,32 @@
 // npm
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function FeatureItem({ item }) {
   // properties
-  const { title, body, price, img } = item;
+  const { title, subTitle, info, price, thumbnail } = item;
+  const { pathname } = useLocation();
+
+  const pathRoute =
+    pathname && pathname === "/menu"
+      ? `category/${title}`
+      : `menu/categories/content/${title}/content`;
 
   return (
     <div className="feature">
       <div className="feature__image">
-        <img src={require(`../assets/images/${img}`)} alt={title} />
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="feature__body">
         <h2 className="heading-title">
-          {title} <span>{price && <h2>{price} sek</h2>}</span>
+          {title && title}
+          {subTitle && subTitle}
         </h2>
         <div className="feature__body--text">
-          <p>{body}</p>
+          {price && <h3>{price} sek</h3>}
+          <p>{info}</p>
         </div>
-        <Link to={`category/${title}`}>
+        <Link to={pathRoute}>
           <button className="btn">see more</button>
         </Link>
       </div>

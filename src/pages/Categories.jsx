@@ -1,15 +1,27 @@
 // files
 // import ProductItem from "../components/ProductItem";
+import { useParams } from "react-router-dom";
+import useCollection from "../hooks/useCollection";
+
 import FeatureItem from "../components/FeatureItem";
-import data from "../data/dummyCat.json";
 
 export default function Categories() {
+  //properties
+  const { title } = useParams();
+  const { documents } = useCollection(
+    `menu/categories/content/${title}/content`
+  );
+
   // componnets
-  const ProductList = data.map((item) => (
-    <FeatureItem key={item.id} item={item} />
-  ));
+  const ProductList =
+    documents &&
+    documents.map((item) => <FeatureItem key={item.id} item={item} />);
+
+  const NoItems = documents && documents.length === 0 && <p>No</p>;
+
   return (
     <div>
+      {NoItems}
       <section>{ProductList}</section>
     </div>
   );

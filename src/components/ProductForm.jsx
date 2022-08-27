@@ -10,10 +10,10 @@ import { useModal } from "../context/ModalContext";
 
 export default function ProductForm({ title }) {
   // local state
-  const [subTitle, setSubTitle] = useState("beef macka");
-  const [info, setInfo] = useState("some text");
-  const [price, setPrice] = useState("185");
-  const [recipe, setRecipe] = useState("salad, bread, beef, mustard");
+  const [subTitle, setSubTitle] = useState("");
+  const [info, setInfo] = useState("");
+  const [price, setPrice] = useState("");
+  const [recipe, setRecipe] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
