@@ -29,8 +29,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="menu" element={<Menu />} />
-            <Route path="menu/category/:title" element={<Categories />} />
-            <Route path="product" element={<ProductDetail />} />
+            <Route path="menu/category/:id" element={<Categories />} />
+            {/* <Route path="menu/category/:title" element={<Categories />} /> */}
+            <Route path="menu/category/:id/:id" element={<ProductDetail />} />
             <Route path="contact" element={<Contact />} />
             <Route
               path="login"
@@ -41,7 +42,8 @@ export default function App() {
               element={user ? <Admin /> : <Navigate to="/" />}
             />
             <Route
-              path="login/admin/category/:title"
+              // path="login/admin/category/:title"
+              path="login/admin/category/:id"
               element={<AdminCategory />}
             />
             <Route

@@ -14,7 +14,7 @@ export default function OpenFormButton({ form }) {
       style={{ marginTop: "5rem", textAlign: "center" }}
     >
       <button onClick={() => setModal(form)}>
-        <FontAwesomeIcon icon={faCirclePlus} color="#3cbcc3" size="3x" />
+        <FontAwesomeIcon icon={faCirclePlus} color="#b2beb5" size="3x" />
       </button>
     </div>
   );

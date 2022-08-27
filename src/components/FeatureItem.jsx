@@ -1,16 +1,13 @@
 // npm
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function FeatureItem({ item }) {
   // properties
-  const { title, subTitle, info, price, thumbnail } = item;
+  const { title, subTitle, info, price, thumbnail, id } = item;
   const { pathname } = useLocation();
 
   const pathRoute =
-    pathname && pathname === "/menu"
-      ? `category/${title}`
-      : `menu/categories/content/${title}/content`;
+    pathname && pathname === "/menu" ? `category/${id}` : `${id}`;
 
   return (
     <div className="feature">
@@ -26,7 +23,7 @@ export default function FeatureItem({ item }) {
           {price && <h3>{price} sek</h3>}
           <p>{info}</p>
         </div>
-        <Link to={pathRoute}>
+        <Link to={pathRoute} state={item}>
           <button className="btn">see more</button>
         </Link>
       </div>

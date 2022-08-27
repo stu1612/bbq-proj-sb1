@@ -1,16 +1,17 @@
 // npm
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 // files
 import useCollection from "../hooks/useCollection";
 import FeatureItem from "../components/FeatureItem";
+import SubHero from "../components/SubHero";
 
 export default function Categories() {
   //properties
-  const { title } = useParams();
-  const { documents } = useCollection(
-    `menu/categories/content/${title}/content`
-  );
+  const location = useLocation();
+  const { thumbnail } = location.state;
+  const { id } = useParams();
+  const { documents } = useCollection(`menu/categories/content/${id}/content`);
 
   // componnets
   const ProductList =
@@ -21,6 +22,7 @@ export default function Categories() {
 
   return (
     <div>
+      <SubHero img={thumbnail} classStyle="hero__img" />
       {NoItems}
       <section>{ProductList}</section>
     </div>

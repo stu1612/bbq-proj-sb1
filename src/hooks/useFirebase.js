@@ -1,6 +1,6 @@
 //npm
 import { useReducer } from "react";
-import { setDoc, doc, deleteDoc } from "firebase/firestore";
+import { setDoc, doc, addDoc, deleteDoc, collection } from "firebase/firestore";
 
 // files
 import { fireStore } from "../firebase/firebase";
@@ -69,5 +69,22 @@ export default function useFirebase() {
     }
   }
 
-  return { addDocument, deleteDocument, response };
+  // add user contact
+  async function addContact(path, data) {
+    dispatch({ type: "IS_PENDING" });
+    try {
+      const ref = collection(fireStore, path);
+      const document = await addDoc(ref, data);
+      // const document = await addDoc(collection(fireStore, data));
+      dispatch({ type: "ADD_DOC", payload: document });
+    } catch (err) {
+      dispatch({
+        type: "ERROR",
+        payload:
+          "Unable to send your enquiry.  Please check all fields are filled in correctly",
+      });
+    }
+  }
+
+  return { addDocument, deleteDocument, addContact, response };
 }

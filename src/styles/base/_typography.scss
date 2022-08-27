@@ -36,3 +36,15 @@ h2 {
   padding: 3rem 0;
   overflow-wrap: break-word;
 }
+
+.admin-title {
+  text-transform: capitalize;
+  font-size: 2rem;
+  overflow-wrap: break-word;
+}
+
+.empty-field {
+  padding: 3rem 0;
+  font-weight: 900;
+  font-size: 2rem;
+}

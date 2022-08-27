@@ -1,0 +1,23 @@
+{
+  "name": {
+    "label": "Name",
+    "placeholder": "Joe Bloggs",
+    "type": "text",
+    "required": true,
+    "autofocus": true
+  },
+  "email": {
+    "label": "Email",
+    "placeholder": "joe.bloggs@email.se",
+    "type": "email",
+    "required": true,
+    "autofocus": false
+  },
+  "message": {
+    "label": "Message",
+    "placeholder": "Enter your message",
+    "type": "textarea",
+    "required": false,
+    "autofocus": false
+  }
+}

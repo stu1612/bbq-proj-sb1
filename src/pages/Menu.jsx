@@ -1,7 +1,5 @@
 // files
-// import CateogryItem from "../components/CategoryItem";
 import useCollection from "../hooks/useCollection";
-
 import FeatureItem from "../components/FeatureItem";
 import Hero from "../components/Hero";
 
@@ -12,10 +10,7 @@ export default function Menu() {
   // components
   const MenuList =
     documents &&
-    documents.map((item) => (
-      <FeatureItem key={item.id} item={item} />
-      // <FeatureItem key={item.id} item={item} />
-    ));
+    documents.map((item) => <FeatureItem key={item.id} item={item} />);
 
   return (
     <main>

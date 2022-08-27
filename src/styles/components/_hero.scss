@@ -9,6 +9,11 @@
     @include a.parallax;
   }
 
+  &__img--small {
+    height: 90vh;
+    @include a.parallax;
+  }
+
   &__home {
     background-image: url("../../assets/images/home_banner.jpg");
   }

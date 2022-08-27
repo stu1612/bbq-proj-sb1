@@ -27,7 +27,9 @@ export default function Admin() {
         </span>
       </p>
       {error && <p>{error}</p>}
-      {documents && documents.length === 0 && <p>There are no items created</p>}
+      {documents && documents.length === 0 && (
+        <p className="empty-field">There are no items created</p>
+      )}
       <section className="admin__content">
         <OpenFormButton form={<CategoryForm />} />
         <div className="items">{CategoryList}</div>

@@ -23,8 +23,9 @@ export default function CategoryForm() {
   // properties
   const { addDocument, response } = useFirebase();
   const { unSetModal } = useModal();
+  const id = slugify(title);
   const path = "menu/categories/content";
-  const imgPath = `assets/image-${title}.png`;
+  const imgPath = `assets/image-${id}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
 
   // methods

@@ -1,7 +1,7 @@
 @use "../abstracts" as a;
 
 .card--item {
-  border: 1px solid a.$color-grey-300;
+  border-bottom: 2px solid a.$accent-color-grey;
   @include a.flex(column, center, center);
   margin: 1rem;
   border-radius: 16px;

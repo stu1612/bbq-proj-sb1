@@ -7,8 +7,9 @@ import InputField from "../InputField";
 import data from "../../data/product.json";
 import useFirebase from "../../hooks/useFirebase";
 import { useModal } from "../../context/ModalContext";
+import slugify from "../../scripts/slugify";
 
-export default function ProductForm({ title }) {
+export default function ProductForm({ id }) {
   // local state
   const [subTitle, setSubTitle] = useState("");
   const [info, setInfo] = useState("");
@@ -24,7 +25,7 @@ export default function ProductForm({ title }) {
   // properties
   const { addDocument, response } = useFirebase();
   const { unSetModal } = useModal();
-  const path = `menu/categories/content/${title}/content`;
+  const path = `menu/categories/content/${id}/content`;
   const imgPath = `assets/products/image-${subTitle}.png`;
   const types = ["image/png", "image/jpeg", "image/jpg"];
 
@@ -68,7 +69,7 @@ export default function ProductForm({ title }) {
     setLoading(true);
     try {
       if (isValid && isUploaded) {
-        const id = subTitle;
+        const id = slugify(subTitle);
         const doc = { subTitle, info, price, recipe, thumbnail };
         await addDocument(path, id, doc);
         setLoading(false);
