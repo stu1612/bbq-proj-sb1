@@ -18,6 +18,10 @@
   object-fit: cover;
 }
 
+@mixin transition-ease {
+  transition: all 0.3s ease-in-out;
+}
+
 @mixin media-xs {
   @media screen and (min-width: 400px) {
     @content;

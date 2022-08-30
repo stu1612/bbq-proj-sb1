@@ -1,18 +1,18 @@
 // files
-import { useModal } from "../context/ModalContext";
 import ContactForm from "../components/forms/ContactForm";
+import SubHero from "../components/SubHero";
+import img from "../assets/images/owner.jpg";
+import Map from "../components/Map";
 
 export default function Contact() {
   // properties
-  const { setModal } = useModal();
   return (
-    <div>
-      <img src="" alt="" />
+    <section>
+      <SubHero img={img} classStyle="hero__img" />
       <div>
-        <button onClick={() => setModal(<ContactForm />)} className="btn">
-          Contact Us
-        </button>
+        <ContactForm />
+        <Map />
       </div>
-    </div>
+    </section>
   );
 }

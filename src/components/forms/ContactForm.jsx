@@ -23,8 +23,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Contact Form</h1>
+    <form onSubmit={handleSubmit} className="contact-form">
       <InputField setup={data.name} state={[name, setName]} />
       <InputField setup={data.email} state={[email, setEmail]} />
       <InputField setup={data.message} state={[message, setMessage]} />

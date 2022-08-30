@@ -21,10 +21,10 @@ export default function Categories() {
   const NoItems = documents && documents.length === 0 && <p>No</p>;
 
   return (
-    <div>
+    <section>
       <SubHero img={thumbnail} classStyle="hero__img" />
       {NoItems}
       <section>{ProductList}</section>
-    </div>
+    </section>
   );
 }
