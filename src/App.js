@@ -13,6 +13,7 @@ import Menu from "./pages/Menu";
 import Navbar from "./components/Navbar";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import ProductDetail from "./pages/ProductDetail";
+import BadRoute from "./pages/BadRoute";
 
 // files
 import { useAuthContext } from "./hooks/useAuthContext";
@@ -51,6 +52,7 @@ export default function App() {
               path="login/password_recovery"
               element={<PasswordRecovery />}
             />
+            <Route path="*" element={<BadRoute />} />
           </Routes>
           <Footer />
         </BrowserRouter>
