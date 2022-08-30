@@ -16,10 +16,20 @@
 
   &__home {
     background-image: url("../../assets/images/home_banner.jpg");
+    background-blend-mode: hard-light;
+    background-color: rgb(37, 34, 34);
   }
   &__menu {
     background-image: url("../../assets/images/menu_banner.jpg");
-    background-blend-mode: color-dodge;
+    background-blend-mode: hard-light;
     background-color: rgb(37, 34, 34);
+  }
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 75px;
   }
 }

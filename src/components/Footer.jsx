@@ -1,5 +1,10 @@
-import React from "react";
-
 export default function Footer() {
-  return <div>Footer</div>;
+  return (
+    <footer>
+      @stu1612 |
+      <a href="https://github.com/stu1612" target="_blank" rel="noreferrer">
+        Github
+      </a>
+    </footer>
+  );
 }

@@ -6,6 +6,7 @@ import Admin from "./pages/Admin";
 import AdminCategory from "./pages/AdminCategory";
 import Categories from "./pages/Categories";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Menu from "./pages/Menu";
@@ -51,6 +52,7 @@ export default function App() {
               element={<PasswordRecovery />}
             />
           </Routes>
+          <Footer />
         </BrowserRouter>
       )}
     </div>
